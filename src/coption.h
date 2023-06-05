@@ -1,10 +1,11 @@
 #ifndef COPTION_H
 #define COPTION_H
 
-#define COSOME 1
-#define CONONE 0
 
 #include <stddef.h>
+
+#define COSOME 1
+#define CONONE 0
 
 #define CO_COMPOUND_LITERAL(x) ((void *)&(typeof(x)){(x)})
 #define CO_EXPLICIT_COMPOUND_LITERAL(x, type) ((void *)&(type){(x)})

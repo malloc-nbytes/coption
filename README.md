@@ -130,7 +130,7 @@ Output:
 ### `coption_free`
 `void coption_free(Coption *op);`
 
-`free()` `op`.
+Call `free()` on the underlying data.
 
 Example:
 ```c
@@ -142,3 +142,35 @@ int main(void) {
 }
 ```
 
+## Macros
+
+| Macro | Definition |
+|-------|------------|
+| `COSOME` | `1` |
+| `CONONE` | `0` |
+| `CO_COMPOUND_LITERAL` | `((void *)&(typeof(x)){(x)})` |
+| `CO_EXPLICIT_COMPOUND_LITERAL` | `((void *)&(type){(x)})` |
+| `COCONST` | `CO_COMPOUND_LITERAL(x)` |
+| `ECOCONST` | `CO_EXPLICIT_COMPOUND_LITERAL(x, type)` |
+
+## Macro Examples
+
+### `COCONST` or `CO_COMPOUND_LITERAL`
+`COCONST(x)`, `CO_COMPOUND_LITERAL(x)`
+
+Create a compound literal of a constant.
+
+Example:
+```c
+coption_somify(&op, COCONST(1));
+```
+
+### `ECOCONST` or `CO_EXPLICIT_COMPOUND_LITERAL`
+`ECOCONST(x, type)`, `CO_EXPLICIT_COMPOUND_LITERAL(x, type)`
+
+Create a compound literal of a constant and specify a type.
+
+Example:
+```c
+coption_somify(&op, ECOCONST(99.0, double));
+```
